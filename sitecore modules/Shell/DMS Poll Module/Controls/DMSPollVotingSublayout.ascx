@@ -12,7 +12,7 @@
        { %>
     <div class="scDMSPollOptionItem">
         <input type="radio" id="<%= "fld_" + PollOptionItems[i].ID.ToString() %>" name="<%= ClientID %>" value="<%= PollOptionItems[i].ID.ToString() %>" />
-        <label for="<%= PollOptionItems[i].ID.ToString() %>">
+        <label for="<%= "fld_"+PollOptionItems[i].ID.ToString() %>">
             <%= FieldRenderer.Render(PollOptionItems[i].InnerItem, "Title")%>
         </label>
     </div>

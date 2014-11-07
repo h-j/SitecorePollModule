@@ -61,36 +61,36 @@ namespace Sitecore.Modules.DMSPoll.Domain
             }
         }
 
-        public bool IsCookiesRequired
-        {
-            get
-            {
-                return MainUtil.GetBool(InnerItem[PollConstants.PollItemCookiesRequiredField], false);
+        //public bool IsCookiesRequired
+        //{
+        //    get
+        //    {
+        //        return MainUtil.GetBool(InnerItem[PollConstants.PollItemCookiesRequiredField], false);
 
-            }
-            set
-            {
-                using (new EditContext(InnerItem))
-                {
-                    InnerItem[PollConstants.PollItemCookiesRequiredField] = value ? "1" : "0";
-                }
-            }
-        }
+        //    }
+        //    set
+        //    {
+        //        using (new EditContext(InnerItem))
+        //        {
+        //            InnerItem[PollConstants.PollItemCookiesRequiredField] = value ? "1" : "0";
+        //        }
+        //    }
+        //}
 
-        public string CookiesRequiredText
-        {
-            get
-            {
-                return InnerItem[PollConstants.PollItemCookiesRequiredTextField];
-            }
-            set
-            {
-                using (new EditContext(InnerItem))
-                {
-                    InnerItem[PollConstants.PollItemCookiesRequiredTextField] = value;
-                }
-            }
-        }
+        //public string CookiesRequiredText
+        //{
+        //    get
+        //    {
+        //        return InnerItem[PollConstants.PollItemCookiesRequiredTextField];
+        //    }
+        //    set
+        //    {
+        //        using (new EditContext(InnerItem))
+        //        {
+        //            InnerItem[PollConstants.PollItemCookiesRequiredTextField] = value;
+        //        }
+        //    }
+        //}
 
         public bool IsArchived
         {

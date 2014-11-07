@@ -32,8 +32,9 @@ namespace Sitecore.Modules.DMSPoll
         public static readonly ID PollItemOneVoteField = ID.Parse("{3FBD0A7A-AE78-4586-86FC-4FD9CB5AA991}");        
         public static readonly ID PollItemIntroField = ID.Parse("{114A7498-E0BD-4F06-8EF4-4B7BD4CE7D75}");
         public static readonly ID PollItemThankYouField = ID.Parse("{F776F02E-E4A2-495D-BF34-9CD5035B71FC}");
-        public static readonly ID PollItemCookiesRequiredField = ID.Parse("{A226A782-9F63-490A-9B6B-779D6740BAF3}");
-        public static readonly ID PollItemCookiesRequiredTextField = ID.Parse("{CC1126BE-37CF-40EE-B017-AA8B9DCA3B8C}");
+      
+        // public static readonly ID PollItemCookiesRequiredField = ID.Parse("{A226A782-9F63-490A-9B6B-779D6740BAF3}");
+        //public static readonly ID PollItemCookiesRequiredTextField = ID.Parse("{CC1126BE-37CF-40EE-B017-AA8B9DCA3B8C}");
         
         public const string PollItemCookiesRequiredText ="Required cookies text";
 

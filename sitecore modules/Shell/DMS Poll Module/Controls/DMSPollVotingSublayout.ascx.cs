@@ -148,10 +148,12 @@ namespace Sitecore.Modules.DMSPoll.Controls
 
                 RegisterCssScript();
 
+               /*
                 if (CurrentPoll.IsCookiesRequired)
                 {
+                    i = 1;
                     Page.ClientScript.RegisterStartupScript(GetType(), "DMSCheckCookies", "DMSPoll.CheckCookie();", true);
-                }
+                } */
 
                 if (CurrentPoll.IsOneVoteForUser && CurrentPoll.VoteExists())
                 {
@@ -167,7 +169,7 @@ namespace Sitecore.Modules.DMSPoll.Controls
                 string callbackScript = string.Format("if(DMSPoll == undefined) {{var DMSPoll = new Object();}} DMSPoll.CallServer = function (arg, context) {{ {0}; }}; ", cbReference);
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "DMSCallServer", callbackScript, true);
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "DMSJavascriptVariables", GetJavascriptVariables(), true);
-
+                
                 
             }
             catch (MissedItemException)
@@ -176,7 +178,7 @@ namespace Sitecore.Modules.DMSPoll.Controls
             }
             catch (Exception ex)
             {
-                Log.Error("PollVotingSublayout.ascx OnLoad Exception", ex, this);
+                Log.Error("PollVotingSublayout.ascx OnLoad Exception" , ex, this);
                 Visible = false;
             }
         }
@@ -210,9 +212,23 @@ namespace Sitecore.Modules.DMSPoll.Controls
 
         public void RegisterCssScript()
         {
-            var css = new HtmlLink { Href = PollConstants.PollCssPath };
-            css.Attributes["rel"] = "stylesheet";
-            this.Page.Header.Controls.Add(css);
+            if (!Sitecore.Context.PageMode.IsPageEditor)
+            {
+               //// Old code tries to insert the css reference assuming that Header is a server side control which may not be truw always
+                
+                #region Commented Old Code
+                //// var css = new HtmlLink { Href = PollConstants.PollCssPath }; "/sitecore modules/shell/DMS Poll Module/Poll.css"
+                //var css = new HtmlLink { Href = "/sitecore modules/shell/DMS Poll Module/Poll.css" };
+                //css.Attributes["rel"] = "stylesheet";
+                //this.Page.Header.Controls.Add(css);
+                #endregion
+
+                //Updated by Hemant Joshi to fix the css reference issue when header is not a server side control
+                string link = string.Format("<link rel='stylesheet' href='{0}' />", PollConstants.PollCssPath);
+                var currentPage = HttpContext.Current.Handler as Page;
+                if (currentPage != null)
+                    currentPage.ClientScript.RegisterClientScriptBlock(typeof(Page), "dmspoll css", link, false);
+            }
         }
 
         private string GetJavascriptVariables()

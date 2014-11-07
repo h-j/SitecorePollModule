@@ -4,6 +4,7 @@ using Sitecore.Analytics.Data;
 using Sitecore.Data.Items;
 
 
+
 namespace Sitecore.Modules.DMSPoll.Domain
 {
   public class PollAnalytics
